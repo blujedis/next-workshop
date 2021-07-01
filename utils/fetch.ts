@@ -1,4 +1,8 @@
-const basePath = process.env.NODE_ENV === 'production' ? 'https://mypath.com' : 'http://localhost:3000';
+import absoluteUrl from 'next-absolute-url';
+
+// const { protocol, host } = absolute
+
+const basePath = process.env.NODE_ENV === 'production' ? 'https://...' : 'http://localhost:3000';
 
 export default function fetcher(path: string, options?: RequestInit) {
   path = basePath + '/' + path.replace(/^\//, '');

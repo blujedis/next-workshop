@@ -39,7 +39,7 @@ const LayoutDefault: FC<Partial<ILayoutProps>> = (props) => {
 
     const isSelected = (path: string) => {
       if (selected === path)
-        return styles.selected;
+        return styles.selected; // css modules.
       return '';
     };
 

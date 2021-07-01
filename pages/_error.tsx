@@ -108,6 +108,7 @@ function ErrorPage(props = {} as IErrorProps) {
 
 }
 
+// deprecated.
 ErrorPage.getInitialProps = ({ err, res }: NextPageContext) => {
   const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
   const message = res ? res.statusMessage : err ? err.message : 'Not Found';

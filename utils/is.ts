@@ -48,10 +48,10 @@ export function getConstructorType(value: unknown) {
     return 'undefined';
   if (isNull(value))
     return 'null';
-  const name = value.constructor.name;
+  const name = (value as any).constructor.name;
   if (name === 'Function')
     return (value as any).name || 'Function';
-  return value.constructor.name;
+  return (value as any).constructor.name;
 }
 
 /**
