@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59 (86127) - https://sketch.com -->
+    <title>Logo Primary</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="83.1693989%" y1="71.0777801%" x2="27.2313297%" y2="36.2022488%" id="linearGradient-1">
+            <stop stop-color="#4D8EFF" offset="0%"></stop>
+            <stop stop-color="#0043EB" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="-8.65166479%" y1="68.487699%" x2="94.7261543%" y2="29.8721659%" id="linearGradient-2">
+            <stop stop-color="#3376FF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="77.6162791%" y1="30.474681%" x2="31.0723514%" y2="77.1559034%" id="linearGradient-3">
+            <stop stop-color="#4D8EFF" offset="0%"></stop>
+            <stop stop-color="#0043EB" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="24.5724562%" y1="91.6557285%" x2="67.9464591%" y2="8.34427152%" id="linearGradient-4">
+            <stop stop-color="#3376FF" offset="0%"></stop>
+            <stop stop-color="#3477FF" offset="0%"></stop>
+            <stop stop-color="#699AFF" offset="15%"></stop>
+            <stop stop-color="#97B9FF" offset="29%"></stop>
+            <stop stop-color="#BDD2FF" offset="44%"></stop>
+            <stop stop-color="#DAE6FF" offset="58%"></stop>
+            <stop stop-color="#EEF4FF" offset="72%"></stop>
+            <stop stop-color="#FBFCFF" offset="86%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Header" transform="translate(-20.000000, -20.000000)" fill-rule="nonzero">
+            <g id="Group-2" transform="translate(20.000000, 20.000000)">
+                <g id="Logo-Primary">
+                    <polygon id="Path" fill="url(#linearGradient-1)" points="27.5466667 23.2918519 15.5348148 26.9718519 31.8014815 31.8014815"></polygon>
+                    <polygon id="Path" fill="url(#linearGradient-2)" points="16 15.2207407 18.48 20.1007407 24.1392593 16.477037 19.517037 7.23259259 0.198518519 31.8014815 11.0814815 25.0577778"></polygon>
+                    <polygon id="Path" fill="url(#linearGradient-3)" points="0.198518519 31.8014815 23.8340741 15.8666667 27.7185185 23.6325926"></polygon>
+                    <polygon id="Path" fill="url(#linearGradient-4)" points="19.8074074 7.81037037 16 0.198518519 0.198518519 31.8014815"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

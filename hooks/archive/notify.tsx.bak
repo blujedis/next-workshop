@@ -1,0 +1,135 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useState, useRef, useEffect } from 'react';
+import { Portal } from 'react-portal';
+
+const NotificationBase = (props) => {
+
+  props = {
+    type: 'dark',
+    closeable: true,
+    position: 'tr',
+    autoClose: true,
+    offset: 12,
+    ...props
+  };
+
+  props.content = props.content || props.children;
+
+  const { type, light, content, closeable, hide, active, width, height, position, offset, autoClose } = props;
+
+  let notificationClass = type ? `notification is-${type}` : 'notification';
+  notificationClass = light ? notificationClass + ` is-light` : notificationClass;
+
+  useEffect(() => {
+    let timeoutId;
+    if (active && autoClose) {
+      const timeout = autoClose === true ? 4000 : autoClose;
+      timeoutId = setTimeout(() => {
+        clearTimeout(timeoutId);
+        hide();
+      }, timeout);
+    }
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+        if (active)
+          hide();
+      }
+    }
+  }, [active]);
+
+  if (!active)
+    return null;
+
+  let placement = {} as any;
+
+  if (position === 'tr')
+    placement = { top: offset, right: offset };
+
+  else if (position === 'br')
+    placement = { bottom: offset, right: offset };
+
+  else if (position === 'bl')
+    placement = { bottom: offset, left: offset };
+
+  else
+    placement = { top: offset, left: offset };
+
+  if (position.includes('t'))
+    placement.top += 50; // add a little for fixed header.
+
+  const style = {
+    position: 'fixed',
+    width,
+    height,
+    ...placement
+  };
+
+  return (
+    <Portal>
+      <div className={notificationClass} style={style}>
+        {!closeable ? null : <button className="delete" onClick={() => hide()}></button>}
+        {content}
+      </div>
+    </Portal>
+  );
+
+};
+
+const useNotify = (defaults) => {
+
+  defaults = {
+    active: false,
+    title: '',
+    content: '',
+    ...defaults
+  };
+
+  const mounted = useRef(false);
+  const [state, setState] = useState({ active: false, title: '', content: '' });
+
+  // For Each of Below
+  // Props = type, width, height, title, content
+
+  function show(props, replace) {
+    if (replace)
+      return setState({ ...props, active: true });
+    setState({ ...state, ...props, active: true });
+  }
+
+  // If replace these are all new props
+  // otherwise merge the props.
+  function update(props, replace) {
+    if (replace)
+      return setState({ ...props })
+    setState({ ...state, ...props });
+  }
+
+  function hide() {
+    setState({ ...state, active: false });
+  }
+
+  function Notification(props) {
+    // Only update on first mount.
+    if (!mounted.current) {
+      mounted.current = true;
+      setTimeout(() => {
+        update(props, true);
+      });
+    }
+    const defaultState = { ...props, ...state };
+    return <NotificationBase {...defaultState} hide={hide} />
+  }
+
+  return {
+    active: state.active,
+    show,
+    hide,
+    update,
+    Notification
+  };
+
+
+};
+
+export default useNotify;

@@ -1,6 +1,6 @@
 {
-  "name": "my-next-app",
-  "version": "0.1.0",
+  "name": "next-workshop",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,14 +9,39 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@babel/core": "^7.14.6",
+    "@emotion/babel-plugin": "^11.3.0",
+    "@emotion/react": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
+    "ansi-colors": "^4.1.1",
+    "express-request-id": "^1.4.1",
+    "lodash.defaultsdeep": "^4.6.1",
+    "lodash.merge": "^4.6.2",
+    "lokalo": "github:blujedis/lokalo#main",
     "next": "11.0.1",
+    "next-auth": "^3.27.0",
+    "next-connect": "^0.10.1",
+    "nprogress": "^0.2.0",
+    "on-headers": "^1.0.2",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-router-dom": "^5.2.0",
+    "restash": "^0.1.25",
+    "sass": "^1.35.1"
   },
   "devDependencies": {
+    "@emotion/babel-preset-css-prop": "^11.2.0",
+    "@types/express-request-id": "^1.4.1",
+    "@types/lodash.defaultsdeep": "^4.6.6",
+    "@types/lodash.merge": "^4.6.6",
+    "@types/nprogress": "^0.2.0",
+    "@types/on-headers": "^1.0.0",
     "@types/react": "17.0.11",
+    "@types/react-router-dom": "^5.1.7",
+    "@types/webpack-env": "^1.16.0",
     "eslint": "7.29.0",
     "eslint-config-next": "11.0.1",
+    "globby": "^11.0.4",
     "typescript": "4.3.4"
   }
 }

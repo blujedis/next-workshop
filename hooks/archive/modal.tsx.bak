@@ -1,0 +1,131 @@
+import { Portal } from 'react-portal';
+import { useState, useRef } from 'react';
+
+const ModalBase = (props) => {
+
+  ////////////////////////////////////////////
+  // Destructuring & Extending with Defaults 
+  ///////////////////////////////////////////
+
+  // so the "..." just means take the "props" above
+  // and spread them out into a new object as you see
+  // below.
+  // When I add the values before the "..." such as 
+  // width and height what we are doing is setting a 
+  // default. So if the user doesn't pass a value
+  // for Modal to use then we have a default value.
+
+  props = {
+    ...props
+  };
+
+  props.type = props.type ? 'is-' + props.type : null;
+  props.content = props.content || props.children;
+
+  // type = primary, warning, danger, success, info, dark
+  const { type, width, height, title, content, active, hide } = props;
+
+  if (!active)
+    return null;
+
+  const modalClass = active ? `modal is-active` : 'modal';
+
+  const getContent = () => {
+
+    // If no type just return the content
+    // as the user has defined.
+    if (!type) {
+      if (height)
+        return (
+          <div style={{ height }}>
+            {content}
+          </div>
+        );
+      return content;
+    }
+
+    const messageClass = `message ${type}`;
+
+    return (
+      <article className={messageClass}>
+        <div className="message-header">
+          <p>{title}</p>
+          <button className="delete" aria-label="delete" onClick={() => hide()}></button>
+        </div>
+        <div className="message-body" style={{ height }}>
+          {content}
+        </div>
+      </article>
+    );
+
+  };
+
+  return (
+    <Portal>
+      <div className={modalClass}>
+        <div className="modal-background"></div>
+        <div className="modal-content" style={{ width }}>
+          {getContent()}
+        </div>
+      </div>
+    </Portal>
+  );
+
+};
+
+const useModal = (defaults) => {
+
+  defaults = {
+    active: false,
+    title: '',
+    content: '',
+    ...defaults
+  };
+
+  const mounted = useRef(false);
+  const [state, setState] = useState({ active: false, title: '', content: '' });
+
+  // For Each of Below
+  // Props = type, width, height, title, content
+
+  function show(props, replace) {
+    if (replace)
+      return setState({ ...props, active: true });
+    setState({ ...state, ...props, active: true });
+  }
+
+  // If replace these are all new props
+  // otherwise merge the props.
+  function update(props, replace) {
+    if (replace)
+      return setState({ ...props })
+    setState({ ...state, ...props });
+  }
+
+  function hide() {
+    setState({ ...state, active: false });
+  }
+
+  function Modal(props) {
+    // Only update on first mount.
+    if (!mounted.current) {
+      mounted.current = true;
+      setTimeout(() => {
+        update(props, true);
+      });
+    }
+    return <ModalBase {...state} hide={hide} />
+  }
+
+  return {
+    active: state.active,
+    show,
+    hide,
+    update,
+    Modal
+  };
+
+
+};
+
+export default useModal;
