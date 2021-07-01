@@ -8,7 +8,7 @@ handler.get((req, res) => {
 });
 
 handler.post((req, res) => {
-  res.status(200).json({ success: true });
+  res.status(200).json({ success: (new Date()).toISOString() });
 });
 
 export default handler;

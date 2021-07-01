@@ -31,10 +31,10 @@ function Api({ hello }: any) {
 }
 
 export async function getStaticProps(props: any) {
-  // const hello = await fetcher('/api/hello');
+  const hello = await fetcher('/api/hello');
   return {
     props: {
-      hello: { name: 'Jim Jones' }
+      hello
     }
   };
 }
